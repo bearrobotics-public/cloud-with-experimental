@@ -1,0 +1,36 @@
+// File: config.proto
+//
+// Copyright 2025 Bear Robotics, Inc. All rights reserved.
+//
+// This Source Code Form is subject to the terms of the Mozilla Public
+// License, v. 2.0. If a copy of the MPL was not distributed with this
+// file, You can obtain one at https://mozilla.org/MPL/2.0/.
+
+syntax = "proto3";
+
+package bearrobotics.api.v0.cloud;
+
+// RobotFilter sets the condition for selecting robots.
+// RobotFilter is applied with AND condition.
+message RobotFilter {
+  // Empty location_id denotes all locations.
+  string location_id = 1;
+}
+
+// Filter for selecting robots.
+message RobotSelector {
+  message RobotIDs {
+    repeated string ids = 1;
+  }
+
+  // Specifies the target identification for an operation. This can be either:
+  // - A specific set of robot IDs, allowing operations to be targeted at individual robots.
+  // - A location ID, which represents all robots associated with a specific location.
+  oneof target_id {
+    // A list of specific robot IDs to target.
+    RobotIDs robot_ids = 1;
+
+    // An identifier for a location, representing all robots associated with this location.
+    string location_id = 2;
+  }
+}

@@ -1,0 +1,59 @@
+// File: status.proto
+//
+// Copyright 2025 Bear Robotics, Inc. All rights reserved.
+//
+// This Source Code Form is subject to the terms of the Mozilla Public
+// License, v. 2.0. If a copy of the MPL was not distributed with this
+// file, You can obtain one at https://mozilla.org/MPL/2.0/.
+
+syntax = "proto3";
+
+package bearrobotics.api.v0.robot;
+
+// Represents the state of the robot's battery system.
+message BatteryState {
+  // State of charge from 0 (battery empty) to 100 (battery full).
+  int32 charge_percent = 1;
+
+  enum State {
+    STATE_UNKNOWN = 0;
+    STATE_CHARGING = 1;
+
+    // Robot is not connected to the charger and is draining energy from
+    // battery.
+    STATE_DISCHARGING = 2;
+
+    // While connected to the charger, the battery is fully charged, no more
+    // energy can be stored into the battery.
+    STATE_FULL = 3;
+  }
+  State state = 2;
+
+  enum ChargeMethod {
+    CHARGE_METHOD_UNKNOWN = 0;
+    CHARGE_METHOD_NOT_CHARGING = 1;
+    CHARGE_METHOD_WIRED = 2;
+    CHARGE_METHOD_WIRELESS = 3;
+  }
+  ChargeMethod charge_method = 3;
+}
+
+// Represents a single tray state.
+message TrayState {
+  enum LoadState {
+    LOAD_STATE_UNKNOWN = 0;
+    LOAD_STATE_LOADED = 1;
+    LOAD_STATE_EMPTY = 2;
+    LOAD_STATE_OVERLOADED = 3;
+  }
+  LoadState load_state = 1;
+
+  // Tray load in kilograms. The minimum precision is 10g.
+  float weight_kg = 2;
+
+  // Ratio of the load to the maximum load capacity of the tray.
+  // The value could exceed 1.0 if the tray is overloaded.
+  // Caveats: If the maximum load is not configured correctly (e.g. 0.0),
+  // NaN can be returned.
+  float load_ratio = 3;
+}
