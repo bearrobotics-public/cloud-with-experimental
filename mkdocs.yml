@@ -66,3 +66,5 @@ nav:
     - Troubleshooting: guides/troubleshooting.md
   - Changelog: changelog.md
   - Roadmap: roadmap.md
+extra_files:
+  - CNAME
