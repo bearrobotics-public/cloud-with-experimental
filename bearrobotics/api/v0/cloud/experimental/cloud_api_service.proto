@@ -1,0 +1,42 @@
+syntax = "proto3";
+
+package bearrobotics.api.v0.cloud.experimental;
+
+import "bearrobotics/api/v0/common/annotations.proto";
+import "bearrobotics/api/v0/robot/experimental/lift.proto";
+import "google/api/annotations.proto";
+
+option go_package = "github.com/bearrobotics/pennybot/bearrobotics/api/v0/cloud/experimental/cloud_api_service_go_proto";
+
+// CloudAPIService.
+//
+// The definition of Bear Cloud API service.
+service CloudAPIService {
+  // Lift API
+  // Control selected compartment with specified action to be performed.
+  rpc ControlCompartment(ControlCompartmentRequest) returns (ControlCompartmentResponse) {
+    option (google.api.http) = {post: "/v0/compartment/control"};
+  }
+
+  // Lift API
+  // Subscribe to the LED and Door state of each compartment.
+  rpc SubscribeCompartmentStatus(SubscribeCompartmentStatusRequest) returns (stream SubscribeCompartmentStatusResponse) {
+    option (google.api.http) = {post: "/v0/compartment_status/subscribe"};
+  }
+}
+
+message ControlCompartmentRequest {
+  string robot_id = 1;
+  robot.experimental.CompartmentControl compartment_control = 2;
+}
+
+message ControlCompartmentResponse {}
+
+message SubscribeCompartmentStatusRequest {
+  string robot_id = 1;
+}
+
+message SubscribeCompartmentStatusResponse {
+  common.EventMetadata metadata = 1;
+  robot.experimental.CompartmentStates compartment_states = 2;
+}

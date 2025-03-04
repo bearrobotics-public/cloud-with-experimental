@@ -86,6 +86,9 @@ message Mission {
   // Override parameters for the mission settings, allowing
   // specific configuration for this mission instance.
   MissionParams override_params = 3;
+
+  // Flexible experimental mission type for experimental APIs.
+  google.protobuf.Any extension = 4;
 }
 
 // Action to update a current mission.
