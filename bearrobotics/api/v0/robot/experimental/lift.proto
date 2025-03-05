@@ -1,0 +1,63 @@
+syntax="proto3";
+
+package bearrobotics.api.v0.robot.experimental;
+
+option go_package = "github.com/bearrobotics/pennybot/bearrobotics/api/v0/robot/experimental/lift_go_proto";
+
+
+message CompartmentControl {
+    enum Led {
+        // Change nothing
+        LED_UNKNOWN = 0;
+        LED_OFF = 1;
+        LED_ON = 2;
+    }
+    enum Door {
+        // Change nothing
+        DOOR_UNKNOWN = 0;
+        DOOR_CLOSE = 1;
+        DOOR_OPEN = 2;
+    }
+    // compartments to apply the control.
+    repeated int32 compartments = 1;
+    Led led = 2;
+    Door door = 3;
+}
+
+message CompartmentState {
+    // Compartment ID that this state is for.
+    // It uses the lowest index of the doors as the compartment ID.
+    // A compartment consists of a set of physical doors depending on the settings of the lift.
+    // Take a look at compartment diagram above to understand what compartment_id is.
+
+    int32 compartment_id = 1;
+
+    enum Led {
+        LED_UNKNOWN = 0;
+        LED_OFF = 1;
+        LED_ON = 2;
+    }
+    // State of LED in the compartment.
+    Led led = 2;
+
+    enum Door {
+        DOOR_UNKNOWN = 0;
+        // Door is currently moving to close.
+        DOOR_CLOSING = 1;
+        // Door is in the state of fully closed.
+        DOOR_CLOSED = 2;
+        // Door is currently moving to open.
+        DOOR_OPENING = 3;
+        // Door is in the state of fully opened.
+        DOOR_OPENED = 4;
+        // Door controls are tried several times and failed due to some reasons
+        // like obstacle stuck and hardware issues.
+        DOOR_ERROR = 5;
+    }
+    // Door state
+    Door door = 3;
+}
+
+message CompartmentStates {
+    repeated CompartmentState compartment_states = 1;
+}

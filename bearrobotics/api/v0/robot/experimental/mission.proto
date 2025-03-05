@@ -1,0 +1,30 @@
+syntax = "proto3";
+
+package bearrobotics.api.v0.robot.experimental;
+
+option go_package = "github.com/bearrobotics/pennybot/bearrobotics/api/v0/robot/experimental/mission_go_proto";
+
+message MissionParams {
+  oneof params {
+    // Parameters for a oneoff mission.
+    // If the oneoff mission should have specific parameters, they should be defined here.
+    OneoffParams oneoff_params = 1;
+  }
+}
+
+enum ElevatorMode {
+  ELEVATOR_MODE_UNKNOWN = 0;
+
+  // The robot should ignore the gap between the elevator and the floor when boarding the elevator.
+  // If the robot is boarding the elevator, set the elevator_mode to ELEVATOR_MODE_BOARDING.
+  ELEVATOR_MODE_BOARDING = 1;
+
+  // The robot should ignore the gap between the elevator and the floor when unboarding the elevator.
+  // If the robot is unboarding the elevator, set the elevator_mode to ELEVATOR_MODE_UNBOARDING.
+  ELEVATOR_MODE_UNBOARDING = 2;
+}
+
+message OneoffParams {
+  // The extra robot mission parameter regarding the elevator.
+  ElevatorMode elevator_mode = 1;
+}

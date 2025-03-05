@@ -25,6 +25,7 @@
 | `type`            | [Type](#missiontypeenum)<br>*enum* |      |
 | `goals`           | [Goal](#goal)<br>*repeated* | The list of goals or destinations for the mission.  |
 | `override_params` | [MissionParams](#missionparams) | Override parameters for the mission settings, <br> allowing specific configuration for this mission instance. |
+| `extension`       | Any                                       |
 
 #### MissionCommand
 | Field       | Type                        | Description |
