@@ -2,7 +2,7 @@
 The definition of Experimental Bear Cloud API service.
 
 ### Lift
-#### CloudAPIService [:material-tag-outline:](../../../changelog.md#february-5-2025 "Available on Beta")
+#### ControlCompartment [:material-tag-outline:](../../../changelog.md#february-5-2025 "Available on Beta")
 - **Request Type:** [ControlCompartmentRequest](#controlcompartmentrequest)
 - **Response Type:** [ControlCompartmentResponse](#controlcompartmentresponse)
 - **Description:**
