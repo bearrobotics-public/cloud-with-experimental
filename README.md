@@ -1,7 +1,7 @@
 # Bear Cloud API
 
 ## Introduction
-Welcome to the Bear's **Cloud** respository. This repository contains:
+Welcome to the Bear's **cloud-with-experimental** respository. This repository contains:
 - Protocol Buffers (`.proto` files) defining the API specifications.
 - Documentation for integrating and using the Cloud API service. 
 
@@ -47,7 +47,7 @@ The Bear Cloud API facilitates communication between third-party clients and rob
 
 ### Cloning the Repository
 ```bash
-git clone https://github.com/bearrobotics-public/cloud.git
+git clone https://github.com/bearrobotics-public/cloud-with-experimental.git
 cd cloud
 ```
 
