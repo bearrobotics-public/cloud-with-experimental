@@ -1,14 +1,4 @@
-### Lift Messages
-
-#### CompartmentStates
-`CompartmentStates` has the states of all compartments.
-
-| Field                | Type        | Description |
-|----------------------|------------|-------------|
-| `compartment_states`  | [CompartmentState](#compartmentstate)<br>*repeated* | List of compartment states.        |
-
-
----
+### Message Types
 
 #### CompartmentControl
 `CompartmentControl` is used to control the state of compartments, including LED and door states.
@@ -19,14 +9,14 @@
 | `led`         | [Led](#compartmentcontrolledenum)  | LED control command. |
 | `door`        | [Door](#compartmentcontroldoorenum) | Door control command. |
 
-##### CompartmentControlLedEnum
+#### CompartmentControlLedEnum
 | Name          | Number | Description |
 |--------------|--------|-------------|
 | LED_UNKNOWN | 0      | Change nothing. |
 | LED_OFF    | 1      | Turn off the LED. |
 | LED_ON     | 2      | Turn on the LED. |
 
-##### CompartmentControlDoorEnum
+#### CompartmentControlDoorEnum
 | Name          | Number | Description |
 |--------------|--------|-------------|
 | DOOR_UNKNOWN | 0      | Change nothing. |
@@ -34,6 +24,13 @@
 | DOOR_OPEN    | 2      | Open the door. |
 
 ---
+
+#### CompartmentStates
+`CompartmentStates` has the states of all compartments.
+
+| Field                | Type        | Description |
+|----------------------|------------|-------------|
+| `compartment_states`  | [CompartmentState](#compartmentstate)<br>*repeated* | List of compartment states.        |
 
 #### CompartmentState
 `CompartmentState` represents the state of a single compartment, including its LED and door status.
@@ -44,14 +41,14 @@
 | `led`           | [Led](#compartmentstateledenum)  | Current LED state. |
 | `door`          | [Door](#compartmentstatedoorenum) | Current door state. |
 
-##### CompartmentStateLedEnum
+#### CompartmentStateLedEnum
 | Name          | Number | Description |
 |--------------|--------|-------------|
 | LED_UNKNOWN | 0      | Unknown LED state. |
 | LED_OFF    | 1      | LED is off. |
 | LED_ON     | 2      | LED is on. |
 
-##### CompartmentStateDoorEnum
+#### CompartmentStateDoorEnum
 | Name            | Number | Description |
 |----------------|--------|-------------|
 | DOOR_UNKNOWN | 0      | Unknown door state. |
