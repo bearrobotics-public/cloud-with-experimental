@@ -48,7 +48,7 @@ The Bear Cloud API facilitates communication between third-party clients and rob
 ### Cloning the Repository
 ```bash
 git clone https://github.com/bearrobotics-public/cloud-with-experimental.git
-cd cloud
+cd cloud-with-experimental
 ```
 
 ## License
