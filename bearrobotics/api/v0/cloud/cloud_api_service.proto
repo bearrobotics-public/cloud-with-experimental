@@ -53,30 +53,6 @@ service CloudAPIService {
     option (google.api.http) = {post: "/v0/location/get"};
   }
 
-  // Retrieve the map corresponding to a given map_id.
-  //
-  // If offline, it uses the cached MapData data.
-  rpc GetMap(GetMapRequest) returns (GetMapResponse) {
-    option (google.api.http) = {post: "/v0/map/get"};
-  }
-
-  // Retrieve annotation data for a specified annotation_id.
-  //
-  // If offline, it uses the cached Annotation data.
-  rpc GetMapAnnotation(GetMapAnnotationRequest)
-      returns (GetMapAnnotationResponse) {
-    option (google.api.http) = {
-      post: "/v0/map-annotation/get"
-    };
-  }
-
-  // Retrieve map data for a specified map_data_id.
-  //
-  // If offline, it uses the cached MapData data.
-  rpc GetMapData(GetMapDataRequest) returns (GetMapDataResponse) {
-    option (google.api.http) = {post: "/v0/map-data/get"};
-  }
-
   // Switch the current map to a specified map.
   //
   // The request should specify a floor level and section index to be used.
@@ -91,14 +67,6 @@ service CloudAPIService {
   // The mission will be added in the order it is received.
   rpc AppendMission(AppendMissionRequest) returns (AppendMissionResponse) {
     option (google.api.http) = {post: "/v0/mission/append"};
-  }
-
-  // Create a mission to go charge a robot regardless of battery state.
-  //
-  // The call will fail if the robot is already on a different mission,
-  // which needs to be canceled before the robot can be charged.
-  rpc ChargeRobot(ChargeRobotRequest) returns (ChargeRobotResponse) {
-    option (google.api.http) = {post: "/v0/robot/charge"};
   }
 
   // Create a mission for a given type.
@@ -259,14 +227,6 @@ message AppendMissionResponse {
   string mission_id = 1;
 }
 
-message ChargeRobotRequest {
-  string robot_id = 1;
-}
-
-message ChargeRobotResponse {
-  string mission_id = 1;
-}
-
 message CreateMissionRequest {
   string robot_id = 1;
   robot.Mission mission = 2;
@@ -298,34 +258,6 @@ message GetLocationResponse {
   // This includes all relevant details about the location, including
   // display name, floor and section info.
   location.Location location = 1;
-}
-
-message GetMapRequest {
-  string map_id = 1;
-}
-
-message GetMapResponse {
-  // Contains all relevant information about the requested map,
-  // including its metadata and configuration details.
-  location.Map map = 1;
-}
-
-message GetMapAnnotationRequest {
-  string annotation_id = 1;
-}
-
-message GetMapAnnotationResponse {
-  location.Annotation annotation = 1;
-}
-
-message GetMapDataRequest {
-  string map_data_id = 1;
-}
-
-message GetMapDataResponse {
-  // Information about the map data which includes all relevant details about
-  // the map data, especially the map.
-  location.MapData map_data = 1;
 }
 
 message GetProfileRequest {

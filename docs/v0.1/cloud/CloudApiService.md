@@ -20,21 +20,6 @@ filter options regardless of robot status.
 - **Response Type:** [GetLocationResponse](#getlocationresponse)
 - **Description:**
   Retrieve the current location data to which the robot is connected.<br>If the robot is offline, it uses the cached Location data.
-#### GetMap [:material-tag-outline:](../../changelog.md#february-5-2025 "Available on Beta")
-- **Request Type:** [GetMapRequest](#getmaprequest)
-- **Response Type:** [GetMapResponse](#getmapresponse)
-- **Description:**
-  Retrieve the map corresponding to a given map_id.<br>If offline, it uses the cached MapData data.
-#### GetMapAnnotation
-- **Request Type:** [GetMapAnnotationRequest](#getmapannotationrequest)
-- **Response Type:** [GetMapAnnotationResponse](#getmapannotationresponse)
-- **Description:**
-  Retrieve annotation data for a specified annotation_id.<br>If offline, it uses the cached Annotation data.
-#### GetMapData [:material-tag-outline:](../../changelog.md#february-5-2025 "Available on Beta")
-- **Request Type:** [GetMapDataRequest](#getmapdatarequest)
-- **Response Type:** [GetMapDataResponse](#getmapdataresponse)
-- **Description:**
-  Retrieve map data for a specified map_data_id.<br>If offline, it uses the cached MapData data.
 #### SwitchMap [:material-tag-outline:](../../changelog.md#february-5-2025 "Available on Beta")
 - **Request Type:** [SwitchMapRequest](#switchmaprequest)
 - **Response Type:** [SwitchMapResponse](#switchmapresponse)
@@ -49,12 +34,6 @@ Returns the map_id of the switched map.
 - **Description:**
   Append the given mission to the end of the queue.
 The mission will be added in the order it is received.
-#### ChargeRobot [:material-tag-outline:](../../changelog.md#february-5-2025 "Available on Beta")
-- **Request Type:** [ChargeRobotRequest](#chargerobotrequest)
-- **Response Type:** [ChargeRobotResponse](#chargerobotresponse)
-- **Description:**
-  Create a mission to go charge a robot regardless of battery state.<br>The call will fail if the robot is already on a different mission,
-which needs to be canceled before the robot can be charged.
 #### CreateMission [:material-tag-outline:](../../changelog.md#february-5-2025 "Available on Beta")
 - **Request Type:** [CreateMissionRequest](#createmissionrequest)
 - **Response Type:** [CreateMissionResponse](#createmissionresponse)
@@ -165,16 +144,6 @@ tends to be static and does not change often.
 |--------------|--------|-------------|
 | `mission_id` | string |             |
 
-##### ChargeRobotRequest
-| Field      | Type   | Description |
-|------------|--------|-------------|
-| `robot_id` | string |             |
-
-##### ChargeRobotResponse
-| Field        | Type   | Description |
-|--------------|--------|-------------|
-| `mission_id` | string |             |
-
 ##### CreateMissionRequest
 | Field      | Type                          | Description |
 |------------|-------------------------------|-------------|
@@ -205,36 +174,6 @@ tends to be static and does not change often.
 | Field      | Type                              | Description |
 |------------|-----------------------------------|-------------|
 | `location` | [Location](../location/Location.md/#location) | Information about the specified location, as represented by a<br>location.Location message.<br>This includes all relevant details about the location, including<br>display name, floor, and section info. |
-
-##### GetMapAnnotationRequest
-| Field           | Type   | Description |
-|-----------------|--------|-------------|
-| `annotation_id` | string |             |
-
-##### GetMapAnnotationResponse
-| Field        | Type                                    | Description |
-|--------------|-----------------------------------------|-------------|
-| `annotation` | [Annotation](../location/Annotation.md/#annotation) | |
-
-##### GetMapDataRequest
-| Field        | Type   | Description |
-|--------------|--------|-------------|
-| `map_data_id` | string |             |
-
-##### GetMapDataResponse
-| Field       | Type                              | Description |
-|-------------|-----------------------------------|-------------|
-| `map_data`  | [MapData](../location/Map.md#mapdata) | Information about the map data which includes all relevant details about<br>the map data, especially the map. |
-
-##### GetMapRequest
-| Field    | Type   | Description |
-|----------|--------|-------------|
-| `map_id` | string |             |
-
-##### GetMapResponse
-| Field  | Type                       | Description |
-|--------|----------------------------|-------------|
-| `map`  | [Map](../location/Map.md#map) | Contains all relevant information about the requested map,<br>including its metadata and configuration details. |
 
 ##### GetProfileRequest
 | Field         | Type   | Description |
