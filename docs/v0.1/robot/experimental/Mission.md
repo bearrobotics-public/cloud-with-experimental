@@ -19,4 +19,3 @@
 |--------------------------------|--------|-------------|
 | ELEVATOR_MODE_UNKNOWN        | 0      | Default unknown state. |
 | ELEVATOR_MODE_BOARDING       | 1      | The robot ignores the gap between the elevator and the floor when boarding. |
-| ELEVATOR_MODE_UNBOARDING     | 2      | The robot ignores the gap between the elevator and the floor when unboarding. |
